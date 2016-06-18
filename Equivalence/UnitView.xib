@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UnitView" customModule="Equivalence" customModuleProvider="target">
+            <connections>
+                <outlet property="afterLabel" destination="W0l-K2-C0g" id="777-3P-WFJ"/>
+                <outlet property="beforeLabel" destination="Ugg-Ob-VrL" id="iGf-uH-hAL"/>
+                <outlet property="valueLabel" destination="eb2-tf-uWH" id="igo-Og-D6o"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Chevron" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-Ib-kdh">
+                    <rect key="frame" x="192" y="74" width="240" height="128"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugg-Ob-VrL">
+                    <rect key="frame" x="8" y="66" width="335" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-K2-C0g">
+                    <rect key="frame" x="8" y="8" width="335" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eb2-tf-uWH">
+                    <rect key="frame" x="8" y="37" width="335" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="W0l-K2-C0g" secondAttribute="bottom" constant="7" id="5va-Wz-hXX">
+                    <variation key="widthClass=compact" constant="8"/>
+                </constraint>
+                <constraint firstItem="eb2-tf-uWH" firstAttribute="top" secondItem="Ugg-Ob-VrL" secondAttribute="bottom" constant="-1" id="7TH-R1-596">
+                    <variation key="widthClass=compact" constant="-3"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="YYw-Ib-kdh" secondAttribute="bottom" constant="30" id="7pC-2E-dEd">
+                    <variation key="widthClass=compact" constant="7"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="Ugg-Ob-VrL" secondAttribute="trailing" constant="8" id="BbI-lW-MTe">
+                    <variation key="widthClass=compact" constant="23"/>
+                </constraint>
+                <constraint firstItem="eb2-tf-uWH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="I0J-cN-aMd"/>
+                <constraint firstItem="YYw-Ib-kdh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="Kai-eK-zcV">
+                    <variation key="widthClass=compact" constant="8"/>
+                </constraint>
+                <constraint firstItem="Ugg-Ob-VrL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="Ofe-sm-brG"/>
+                <constraint firstItem="W0l-K2-C0g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="TuH-yB-NXK"/>
+                <constraint firstItem="W0l-K2-C0g" firstAttribute="top" secondItem="eb2-tf-uWH" secondAttribute="bottom" constant="-1.5" id="VLh-Zr-50F">
+                    <variation key="widthClass=compact" constant="-0.5"/>
+                </constraint>
+                <constraint firstItem="YYw-Ib-kdh" firstAttribute="leading" secondItem="eb2-tf-uWH" secondAttribute="trailing" constant="8" id="Wkl-fI-lXU"/>
+                <constraint firstItem="Ugg-Ob-VrL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="ox5-7t-yON"/>
+                <constraint firstAttribute="trailing" secondItem="YYw-Ib-kdh" secondAttribute="trailing" constant="8" id="sYN-3P-cqR"/>
+                <constraint firstAttribute="trailing" secondItem="W0l-K2-C0g" secondAttribute="trailing" constant="8" id="zOn-pD-Vz8">
+                    <variation key="widthClass=compact" constant="23"/>
+                </constraint>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="5va-Wz-hXX"/>
+                    <exclude reference="TuH-yB-NXK"/>
+                    <exclude reference="VLh-Zr-50F"/>
+                    <exclude reference="zOn-pD-Vz8"/>
+                    <exclude reference="7TH-R1-596"/>
+                    <exclude reference="I0J-cN-aMd"/>
+                    <exclude reference="BbI-lW-MTe"/>
+                    <exclude reference="Ofe-sm-brG"/>
+                    <exclude reference="ox5-7t-yON"/>
+                    <exclude reference="7pC-2E-dEd"/>
+                    <exclude reference="Kai-eK-zcV"/>
+                    <exclude reference="Wkl-fI-lXU"/>
+                    <exclude reference="sYN-3P-cqR"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="constraints">
+                    <include reference="5va-Wz-hXX"/>
+                    <include reference="TuH-yB-NXK"/>
+                    <include reference="VLh-Zr-50F"/>
+                    <include reference="zOn-pD-Vz8"/>
+                    <include reference="7TH-R1-596"/>
+                    <include reference="I0J-cN-aMd"/>
+                    <include reference="BbI-lW-MTe"/>
+                    <include reference="Ofe-sm-brG"/>
+                    <include reference="ox5-7t-yON"/>
+                    <include reference="7pC-2E-dEd"/>
+                    <include reference="Kai-eK-zcV"/>
+                    <include reference="Wkl-fI-lXU"/>
+                    <include reference="sYN-3P-cqR"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="352.5" y="400"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Chevron" width="8" height="13"/>
+    </resources>
+</document>
