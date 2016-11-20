@@ -10,7 +10,7 @@ import UIKit
 
 class UnitPickerTableViewController: UITableViewController {
     var converter: Converter?
-    var unitTarget: ConverterUnitTarget = ConverterUnitTarget.Source
+    var unitTarget: ConverterUnitTarget = ConverterUnitTarget.source
     var unitClassIndex: Int = 0
     var currentUnitID: Int = 0
 
@@ -20,7 +20,7 @@ class UnitPickerTableViewController: UITableViewController {
         
         //self.tableView.delegate = self
         
-        if (self.unitTarget == ConverterUnitTarget.Source) {
+        if (self.unitTarget == ConverterUnitTarget.source) {
             print("Source Picker")
             self.navigationItem.title = "Source Units"
         } else {
@@ -28,11 +28,11 @@ class UnitPickerTableViewController: UITableViewController {
             self.navigationItem.title = "Destination Units"
         }
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         //self.tableView.backgroundColor = UIColor.clearColor()
-        self.tableView.separatorColor = UIColor.clearColor()
-        self.tableView.tableFooterView = UIView(frame:CGRectZero)
+        self.tableView.separatorColor = UIColor.clear
+        self.tableView.tableFooterView = UIView(frame:CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,23 +42,23 @@ class UnitPickerTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.converter?.numberOfUnitsInClass(atIndex: self.unitClassIndex))!
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UnitCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UnitCell", for: indexPath)
 
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel?.text = self.converter?.nameOfUnit(atIndex: indexPath.row, atClassIndex: self.unitClassIndex)
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel?.text = self.converter?.nameOfUnit(atIndex: (indexPath as NSIndexPath).row, atClassIndex: self.unitClassIndex)
         //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
-        if (self.currentUnitID == indexPath.row)
+        if (self.currentUnitID == (indexPath as NSIndexPath).row)
         {
             cell.backgroundColor = UIColor(red:0.9, green:0.9, blue:0.9, alpha: 1)
         }
@@ -105,7 +105,7 @@ class UnitPickerTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -113,10 +113,10 @@ class UnitPickerTableViewController: UITableViewController {
     
     // MARK: - Selection
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        self.converter?.selectUnit(target: self.unitTarget, unitClassID: self.unitClassIndex, unitID: indexPath.row)
-        self.performSegueWithIdentifier("unwindToConverter", sender: self)
+        self.converter?.selectUnit(target: self.unitTarget, unitClassID: self.unitClassIndex, unitID: (indexPath as NSIndexPath).row)
+        self.performSegue(withIdentifier: "unwindToConverter", sender: self)
     }
 
 }

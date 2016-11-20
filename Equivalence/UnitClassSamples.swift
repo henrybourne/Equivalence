@@ -24,21 +24,21 @@ class Samples: UnitClass {
         ]
     }
     
-    func convertToMilliseconds(input: Double, unitID: Int) -> Double {
+    func convertToMilliseconds(_ input: Double, unitID: Int) -> Double {
         let output:Double = (input / self.units[unitID].scalar) * 1000.0
         return output
     }
     
-    func convertFromMilliseconds(input: Double, unitID: Int) -> Double {
+    func convertFromMilliseconds(_ input: Double, unitID: Int) -> Double {
         let output:Double = (input / 1000.0) * self.units[unitID].scalar
         return output
     }
     
-    func descriptionStringBefore(unitID: Int) -> String {
+    func descriptionStringBefore(_ unitID: Int) -> String {
         return "The duration of"
     }
     
-    func descriptionStringAfter(unitID: Int) -> String {
+    func descriptionStringAfter(_ unitID: Int) -> String {
         return "Samples at a rate of \(self.units[unitID].name)"
     }
 }

@@ -32,25 +32,25 @@ class UnitView: UIControl {
         
         // use bounds not frame or it'll be offset
         view.frame = bounds
-        view.userInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         
         // Make the view stretch with containing view
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         addSubview(view)
     }
     
     func loadViewFromNib() -> UIView {
         
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "UnitView", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let roundedRect: UIBezierPath = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: 4)
-        UIColor.whiteColor().setFill()
+        UIColor.white.setFill()
         roundedRect.fill()
     }
     

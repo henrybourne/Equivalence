@@ -13,20 +13,20 @@ protocol UnitClass: class
     var unitClassName:String {get}
     var units:[Unit] {get}
     
-    func convertToMilliseconds(input: Double, unitID: Int) -> Double
-    func convertFromMilliseconds(input: Double, unitID: Int) -> Double
-    func descriptionStringBefore(unitID: Int) -> String
-    func descriptionStringAfter(unitID: Int) -> String
+    func convertToMilliseconds(_ input: Double, unitID: Int) -> Double
+    func convertFromMilliseconds(_ input: Double, unitID: Int) -> Double
+    func descriptionStringBefore(_ unitID: Int) -> String
+    func descriptionStringAfter(_ unitID: Int) -> String
     
-    func getUnit(unitID: Int) -> Unit
-    func getUnitName(unitID: Int) -> String
+    func getUnit(_ unitID: Int) -> Unit
+    func getUnitName(_ unitID: Int) -> String
 }
 
 
 // Extend the protocol to provide some default function implementations, so that I don't have to rewrite the implementation in each class.
 extension UnitClass
 {
-    func getUnit(unitID: Int) -> Unit
+    func getUnit(_ unitID: Int) -> Unit
     {
         if (unitID >= units.count)
         {
@@ -42,7 +42,7 @@ extension UnitClass
         }
     }
     
-    func getUnitName(unitID: Int) -> String
+    func getUnitName(_ unitID: Int) -> String
     {
         return self.units[unitID].name
     }

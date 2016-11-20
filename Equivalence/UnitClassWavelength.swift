@@ -23,21 +23,21 @@ class Wavelength: UnitClass {
         ]
     }
     
-    func convertToMilliseconds(input: Double, unitID: Int) -> Double {
+    func convertToMilliseconds(_ input: Double, unitID: Int) -> Double {
         let output:Double = (input / (GlobalValues.sharedInstance.speedOfSound * self.units[unitID].scalar)) * 1000.0
         return output
     }
     
-    func convertFromMilliseconds(input: Double, unitID: Int) -> Double {
+    func convertFromMilliseconds(_ input: Double, unitID: Int) -> Double {
         let output:Double = (GlobalValues.sharedInstance.speedOfSound * self.units[unitID].scalar) * (input / 1000.0)
         return output
     }
     
-    func descriptionStringBefore(unitID: Int) -> String {
-        return "Sne cycle of a waveform with a wavelength of"
+    func descriptionStringBefore(_ unitID: Int) -> String {
+        return "One cycle with a wavelength of"
     }
     
-    func descriptionStringAfter(unitID: Int) -> String {
+    func descriptionStringAfter(_ unitID: Int) -> String {
         return self.units[unitID].name
     }
 }

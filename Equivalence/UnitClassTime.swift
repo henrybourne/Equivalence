@@ -23,21 +23,21 @@ class Time: UnitClass {
         ]
     }
     
-    func convertToMilliseconds(input: Double, unitID: Int) -> Double {
+    func convertToMilliseconds(_ input: Double, unitID: Int) -> Double {
         let output:Double = input / self.units[unitID].scalar
         return output
     }
     
-    func convertFromMilliseconds(input: Double, unitID: Int) -> Double {
+    func convertFromMilliseconds(_ input: Double, unitID: Int) -> Double {
         let output:Double = input * self.units[unitID].scalar
         return output
     }
     
-    func descriptionStringBefore(unitID: Int) -> String {
+    func descriptionStringBefore(_ unitID: Int) -> String {
         return "A duration of"
     }
     
-    func descriptionStringAfter(unitID: Int) -> String {
+    func descriptionStringAfter(_ unitID: Int) -> String {
         return self.units[unitID].name
     }
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 enum ConverterUnitTarget {
-    case Source
-    case Destination
+    case source
+    case destination
 }
 
 class Converter {
@@ -52,9 +52,9 @@ class Converter {
         convert()
     }
     
-    func selectUnit(target target:ConverterUnitTarget, unitClassID:Int, unitID:Int) -> Void
+    func selectUnit(target:ConverterUnitTarget, unitClassID:Int, unitID:Int) -> Void
     {
-        if (target == ConverterUnitTarget.Source)
+        if (target == ConverterUnitTarget.source)
         {
             self.sourceUnitClassID = unitClassID
             self.sourceUnitID = unitID
@@ -80,7 +80,7 @@ class Converter {
         return unitClasses.count
     }
     
-    func nameOfUnitClass(atIndex atIndex:Int) -> String
+    func nameOfUnitClass(atIndex:Int) -> String
     {
         if (atIndex < 0 || atIndex >= self.unitClasses.count)
         {
@@ -92,7 +92,7 @@ class Converter {
         }
     }
     
-    func numberOfUnitsInClass(atIndex atIndex:Int) -> Int
+    func numberOfUnitsInClass(atIndex:Int) -> Int
     {
         if (atIndex < 0 || atIndex >= self.unitClasses.count)
         {
@@ -131,13 +131,18 @@ class Converter {
     }
     
     func swap() -> Void {
-        let newDestinationValue: Double = self.sourceValue
-        self.sourceValue = self.destinationValue
-        self.destinationValue = newDestinationValue
-        
-        let newDestinationValueString: String = self.sourceValueString
-        self.sourceValueString = self.destinationValueString
-        self.destinationValueString = newDestinationValueString
+//        let newDestinationValue: Double = self.sourceValue
+//        self.sourceValue = self.destinationValue
+//        self.destinationValue = newDestinationValue
+//        
+//        let newDestinationValueString: String = self.sourceValueString
+//        self.sourceValueString = self.destinationValueString
+//        self.destinationValueString = newDestinationValueString
+ 
+        self.sourceValue = 0
+        self.destinationValue = 0
+        self.sourceValueString = self.stringFromNumber(self.sourceValue)
+        self.destinationValueString = self.stringFromNumber(self.destinationValue)
         
         let newDestinationUnit: Unit = self.sourceUnit
         self.sourceUnit = self.destinationUnit
@@ -164,9 +169,9 @@ class Converter {
                 self.sourceValueString = "0"
             } else {
                 var newSource: String = self.sourceValueString
-                newSource.removeAtIndex(newSource.endIndex.advancedBy(-1))
-                if (newSource[newSource.endIndex.advancedBy(-1)] == ".") {
-                    newSource.removeAtIndex(newSource.endIndex.advancedBy(-1))
+                newSource.remove(at: newSource.index(newSource.endIndex, offsetBy: -1))
+                if (newSource[newSource.index(newSource.endIndex, offsetBy: -1)] == ".") {
+                    newSource.remove(at: newSource.index(newSource.endIndex, offsetBy: -1))
                 }
                 self.sourceValueString = newSource
             }
@@ -181,29 +186,33 @@ class Converter {
         self.convert()
     }
     
-    func addNumber(number: String) {
+    func addNumber(_ number: String) {
         if (self.sourceValueString == "0") {
             self.sourceValueString = ""
         }
-        self.sourceValueString += number
-        self.sourceValue = Double(self.sourceValueString)!
-        self.convert()
-    }
-    
-    func addDecimal() {
-        if (self.sourceValueString.rangeOfString(".") == nil) {
-            self.sourceValueString += "."
+        if (self.sourceValueString.characters.count < 20) {
+            self.sourceValueString += number
             self.sourceValue = Double(self.sourceValueString)!
             self.convert()
         }
     }
     
-    func stringFromNumber(number: Double) -> String {
+    func addDecimal() {
+        if (self.sourceValueString.range(of: ".") == nil) {
+            if (self.sourceValueString.characters.count < 20) {
+                self.sourceValueString += "."
+                self.sourceValue = Double(self.sourceValueString)!
+                self.convert()
+            }
+        }
+    }
+    
+    func stringFromNumber(_ number: Double) -> String {
         var newString: String = "\(number)"
-        let range:Range? = newString.rangeOfString(".0")
+        let range:Range? = newString.range(of: ".0")
         if (range != nil) {
-            if (range?.endIndex == newString.endIndex) {
-                newString.removeRange(range!)
+            if (range?.upperBound == newString.endIndex) {
+                newString.removeSubrange(range!)
             }
         }
         if (newString == "inf")
