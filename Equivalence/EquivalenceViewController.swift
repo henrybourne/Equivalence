@@ -30,20 +30,9 @@ class EquivalenceViewController: UIViewController {
     
     @IBAction func numberTapped(_ sender: UIButton) {
         let buttonText: String = sender.titleLabel!.text!
-        
-//        // Get attributed text from the value label
-//        var sourceLabelText = (self.sourceUnitView.valueLabel.attributedText)!
-//        // Append one character to see how long it will be when another number is added
-//        sourceLabelText.str
-//        //
-//        let size = (sourceLabelText.size())!
 
         let labelText = self.sourceUnitView.valueLabel.text! + String("0")
-        //let fontAttribute = NSFontAttributeName( self.sourceUnitView.valueLabel.font
-        //NSFontAttributeName(self.sourceUnitView.valueLabel.font)
-//        let textSize = (labelText as NSString).size(attributes: fontAttribute)
         let textSize = (labelText as NSString).size(attributes: [NSFontAttributeName: self.sourceUnitView.valueLabel.font]);
-        
         
         if (textSize.width < self.sourceUnitView.valueLabel.bounds.width) {
             self.converter.addNumber(buttonText)

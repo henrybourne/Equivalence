@@ -18,6 +18,22 @@ class SettingsTableViewController: UITableViewController {
 
         self.speedOfSoundTextField.delegate = self
         self.speedOfSoundTextField.text = "\(GlobalValues.sharedInstance.speedOfSound)"
+        
+        let barButtonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self.speedOfSoundTextField, action:#selector(UIResponder.resignFirstResponder))
+        let barButtonFlexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let toolbar  = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
+        toolbar.items = [barButtonFlexibleSpace, barButtonDone]
+        toolbar.tintColor = UIColor.black
+        self.speedOfSoundTextField.inputAccessoryView = toolbar
+    }
+    
+    @IBAction func speedOfSoundEditingDidEnd(_ sender: UITextField) {
+        if (sender.text == "") {
+            sender.text = "\(GlobalValues.sharedInstance.speedOfSoundDefault)"
+            GlobalValues.sharedInstance.speedOfSound = GlobalValues.sharedInstance.speedOfSoundDefault
+        } else {
+            GlobalValues.sharedInstance.speedOfSound = Double(sender.text!)!
+        }
     }
 
     override func didReceiveMemoryWarning() {

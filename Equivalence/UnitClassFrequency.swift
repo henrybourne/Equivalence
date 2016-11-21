@@ -21,12 +21,12 @@ class Frequency: UnitClass {
     }
     
     func convertToMilliseconds(_ input: Double, unitID: Int) -> Double {
-        let output:Double = (1000.0 / input) * self.units[unitID].scalar
+        let output:Double = (input/1000) * self.units[unitID].scalar
         return output
     }
     
     func convertFromMilliseconds(_ input: Double, unitID: Int) -> Double {
-        let output:Double = (input / 1000.0) * self.units[unitID].scalar
+        let output:Double = (1000.0/input) * self.units[unitID].scalar
         return output
     }
     

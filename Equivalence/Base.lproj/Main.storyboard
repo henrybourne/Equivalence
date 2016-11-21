@@ -337,7 +337,7 @@
                                 <segue destination="kXx-sg-4xB" kind="show" id="0YF-VH-e85"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="UJL-eR-VH1">
+                        <barButtonItem key="rightBarButtonItem" image="Swap Icon" id="UJL-eR-VH1">
                             <connections>
                                 <action selector="swapTapped:" destination="BYZ-38-t0r" id="dHO-q0-LYX"/>
                             </connections>
@@ -357,7 +357,7 @@
         <scene sceneID="RHL-6D-rQj">
             <objects>
                 <tableViewController id="kXx-sg-4xB" customClass="SettingsTableViewController" customModule="Equivalence" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wqs-ky-uxg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wqs-ky-uxg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93110466000000003" green="0.93128353360000005" blue="0.9310747385" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -372,16 +372,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed of Sound (m/s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgI-Vb-H6m">
-                                                    <rect key="frame" x="15" y="11" width="172" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="172" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="340" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T5x-kV-UeV">
-                                                    <rect key="frame" x="195" y="7" width="117" height="30"/>
+                                                    <rect key="frame" x="195" y="7" width="117" height="31"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="speedOfSoundEditingDidEnd:" destination="kXx-sg-4xB" eventType="editingDidEnd" id="4Me-6F-vYq"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -499,5 +502,6 @@
     <resources>
         <image name="Clear" width="20" height="20"/>
         <image name="Settings Icon" width="22" height="22"/>
+        <image name="Swap Icon" width="20" height="20"/>
     </resources>
 </document>
