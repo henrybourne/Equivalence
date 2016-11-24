@@ -34,7 +34,7 @@ class Time: UnitClass {
     }
     
     func descriptionStringBefore(_ unitID: Int) -> String {
-        return "A duration of"
+        return "The duration of"
     }
     
     func descriptionStringAfter(_ unitID: Int) -> String {

@@ -11,8 +11,9 @@ import Foundation
 class Wavelength: UnitClass {
     var unitClassName:String
     var units:[Unit]
+    var constants: Constants
     
-    init() {
+    init(constants: Constants) {
         self.unitClassName = "Wavelength"
         self.units = [
             Unit(name: "Meters",        scalar: 1),
@@ -21,15 +22,16 @@ class Wavelength: UnitClass {
             Unit(name: "Feet",          scalar: 3.2808),
             Unit(name: "Inches",        scalar: 39.370)
         ]
+        self.constants = constants
     }
     
     func convertToMilliseconds(_ input: Double, unitID: Int) -> Double {
-        let output:Double = (input / (GlobalValues.sharedInstance.speedOfSound * self.units[unitID].scalar)) * 1000.0
+        let output:Double = (input / (self.constants.speedOfSound * self.units[unitID].scalar)) * 1000.0
         return output
     }
     
     func convertFromMilliseconds(_ input: Double, unitID: Int) -> Double {
-        let output:Double = (GlobalValues.sharedInstance.speedOfSound * self.units[unitID].scalar) * (input / 1000.0)
+        let output:Double = (self.constants.speedOfSound * self.units[unitID].scalar) * (input / 1000.0)
         return output
     }
     

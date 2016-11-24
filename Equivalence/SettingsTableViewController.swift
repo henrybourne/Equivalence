@@ -11,13 +11,25 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var speedOfSoundTextField: UITextField!
+    var converter:Converter?
+   
+//    init(converter:Converter) {
+//        self.converter = converter
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        self.converter = Converter()
+//        super.init(coder: aDecoder)
+//    }
 
     override func viewDidLoad() {
+        print("SettingsTableViewController viewDidLoad")
         super.viewDidLoad()
         self.navigationItem.title = "Settings"
 
         self.speedOfSoundTextField.delegate = self
-        self.speedOfSoundTextField.text = "\(GlobalValues.sharedInstance.speedOfSound)"
+        self.speedOfSoundTextField.text = "\((self.converter?.constants.speedOfSound)!)"
         
         let barButtonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self.speedOfSoundTextField, action:#selector(UIResponder.resignFirstResponder))
         let barButtonFlexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
@@ -29,11 +41,12 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func speedOfSoundEditingDidEnd(_ sender: UITextField) {
         if (sender.text == "") {
-            sender.text = "\(GlobalValues.sharedInstance.speedOfSoundDefault)"
-            GlobalValues.sharedInstance.speedOfSound = GlobalValues.sharedInstance.speedOfSoundDefault
+            sender.text = "\(self.converter?.constants.speedOfSound)"
+            self.converter?.constants.speedOfSound = (self.converter?.constants.speedOfSoundDefault)!
         } else {
-            GlobalValues.sharedInstance.speedOfSound = Double(sender.text!)!
+            self.converter?.constants.speedOfSound = Double(sender.text!)!
         }
+        self.converter?.convert()
     }
 
     override func didReceiveMemoryWarning() {

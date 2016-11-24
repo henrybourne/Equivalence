@@ -334,7 +334,7 @@
                     <navigationItem key="navigationItem" title="Equivalence" id="4IR-HC-wG8">
                         <barButtonItem key="leftBarButtonItem" image="Settings Icon" id="BvW-6H-WU6">
                             <connections>
-                                <segue destination="kXx-sg-4xB" kind="show" id="0YF-VH-e85"/>
+                                <segue destination="kXx-sg-4xB" kind="show" identifier="showSettings" id="0YF-VH-e85"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Swap Icon" id="UJL-eR-VH1">
@@ -365,10 +365,10 @@
                             <tableViewSection headerTitle="Constants" id="ZpM-6I-449">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lcm-2J-cIC">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcm-2J-cIC" id="PnD-Q0-64R">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed of Sound (m/s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgI-Vb-H6m">

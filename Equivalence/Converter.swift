@@ -13,8 +13,10 @@ enum ConverterUnitTarget {
     case destination
 }
 
-class Converter {
-    let unitClasses:[UnitClass]
+class Converter: NSObject, NSCoding {
+    var unitClasses:[UnitClass]
+    
+    var constants:Constants
     
     var sourceUnitClass:UnitClass
     var sourceUnitClassID:Int
@@ -30,24 +32,27 @@ class Converter {
     var destinationValue:Double = 0
     var destinationValueString:String = "0"
     
-    init() {
+    override init() {
+        self.constants = Constants()
+        
         unitClasses = [
             Frames(),
             Frequency(),
             Samples(),
             Time(),
-            Wavelength()
+            Wavelength(constants: self.constants)
         ]
-        self.sourceUnitClassID = 2
-        self.sourceUnitID = 2
+        self.sourceUnitClassID = 1
+        self.sourceUnitID = 0
         self.sourceUnitClass = self.unitClasses[self.sourceUnitClassID]
         self.sourceUnit = self.sourceUnitClass.getUnit(sourceUnitID)
         
-        self.destinationUnitClassID = 3
-        self.destinationUnitID = 1
+        self.destinationUnitClassID = 4
+        self.destinationUnitID = 0
         self.destinationUnitClass = self.unitClasses[destinationUnitClassID]
         self.destinationUnit = self.sourceUnitClass.getUnit(destinationUnitID)
         
+        super.init()
         
         convert()
     }
@@ -238,6 +243,23 @@ class Converter {
     func destinationDescriptionStringAfter() -> String
     {
         return destinationUnitClass.descriptionStringAfter(self.destinationUnitID)
+    }
+    
+    //MARK: - NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.constants, forKey: "constants")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init()
+        self.constants = aDecoder.decodeObject(forKey: "constants") as! Constants
+        self.unitClasses = [
+            Frames(),
+            Frequency(),
+            Samples(),
+            Time(),
+            Wavelength(constants: self.constants)
+        ]
     }
     
 }

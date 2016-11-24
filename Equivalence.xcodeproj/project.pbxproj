@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA408BBF1DE4C4EC007F6755 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA408BBE1DE4C4EC007F6755 /* Constants.swift */; };
 		BA4AB0C61CF0739700F7CAFE /* UnitClassPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AB0C51CF0739700F7CAFE /* UnitClassPickerTableViewController.swift */; };
 		BA4AB0C81CF07D1E00F7CAFE /* UnitPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AB0C71CF07D1E00F7CAFE /* UnitPickerTableViewController.swift */; };
 		BA93965C1C98A5AD006C2599 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93965B1C98A5AC006C2599 /* Unit.swift */; };
-		BA93965E1C98A719006C2599 /* GlobalValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93965D1C98A719006C2599 /* GlobalValues.swift */; };
 		BA9396691C98A78A006C2599 /* UnitClassFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9396681C98A78A006C2599 /* UnitClassFrequency.swift */; };
 		BA93966B1C98A7CE006C2599 /* UnitClassTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93966A1C98A7CE006C2599 /* UnitClassTime.swift */; };
 		BA93966D1C98A7D7006C2599 /* UnitClassSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93966C1C98A7D7006C2599 /* UnitClassSamples.swift */; };
@@ -40,10 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA408BBE1DE4C4EC007F6755 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA4AB0C51CF0739700F7CAFE /* UnitClassPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitClassPickerTableViewController.swift; sourceTree = "<group>"; };
 		BA4AB0C71CF07D1E00F7CAFE /* UnitPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitPickerTableViewController.swift; sourceTree = "<group>"; };
 		BA93965B1C98A5AC006C2599 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
-		BA93965D1C98A719006C2599 /* GlobalValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalValues.swift; sourceTree = "<group>"; };
 		BA9396681C98A78A006C2599 /* UnitClassFrequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitClassFrequency.swift; sourceTree = "<group>"; };
 		BA93966A1C98A7CE006C2599 /* UnitClassTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitClassTime.swift; sourceTree = "<group>"; };
 		BA93966C1C98A7D7006C2599 /* UnitClassSamples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitClassSamples.swift; sourceTree = "<group>"; };
@@ -120,9 +120,9 @@
 			isa = PBXGroup;
 			children = (
 				BABF61E11C95E68300D0D78C /* AppDelegate.swift */,
+				BA408BBE1DE4C4EC007F6755 /* Constants.swift */,
 				BA9396741C98A8C8006C2599 /* Converter.swift */,
 				BABF61E31C95E68300D0D78C /* EquivalenceViewController.swift */,
-				BA93965D1C98A719006C2599 /* GlobalValues.swift */,
 				BAFC0FC71DE1EC59004C286B /* SettingsTableViewController.swift */,
 				BA4AB0C51CF0739700F7CAFE /* UnitClassPickerTableViewController.swift */,
 				BA4AB0C71CF07D1E00F7CAFE /* UnitPickerTableViewController.swift */,
@@ -256,6 +256,7 @@
 				BA4AB0C61CF0739700F7CAFE /* UnitClassPickerTableViewController.swift in Sources */,
 				BA4AB0C81CF07D1E00F7CAFE /* UnitPickerTableViewController.swift in Sources */,
 				BA9396751C98A8C8006C2599 /* Converter.swift in Sources */,
+				BA408BBF1DE4C4EC007F6755 /* Constants.swift in Sources */,
 				BA9396691C98A78A006C2599 /* UnitClassFrequency.swift in Sources */,
 				BA93965C1C98A5AD006C2599 /* Unit.swift in Sources */,
 				BA9396711C98A7E8006C2599 /* UnitClassWavelength.swift in Sources */,
@@ -263,7 +264,6 @@
 				BA93966D1C98A7D7006C2599 /* UnitClassSamples.swift in Sources */,
 				BABF61E21C95E68300D0D78C /* AppDelegate.swift in Sources */,
 				BAFC0FC81DE1EC59004C286B /* SettingsTableViewController.swift in Sources */,
-				BA93965E1C98A719006C2599 /* GlobalValues.swift in Sources */,
 				BA93966F1C98A7E1006C2599 /* UnitClassFrames.swift in Sources */,
 				BA93966B1C98A7CE006C2599 /* UnitClassTime.swift in Sources */,
 			);

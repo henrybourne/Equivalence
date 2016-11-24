@@ -19,6 +19,12 @@ class EquivalenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Unarchive Converter data if available
+        let defaults = UserDefaults.standard
+        if let savedConverter = defaults.object(forKey: "converter") as? Data {
+            self.converter = NSKeyedUnarchiver.unarchiveObject(with: savedConverter) as! Converter
+        }
+        
         self.navigationController!.navigationBar.isTranslucent = false
         self.navigationController!.navigationBar.barTintColor = UIColor(red:0.929, green:0.929, blue:0.929, alpha: 1)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -26,6 +32,11 @@ class EquivalenceViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         self.updateLabels()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.updateLabels()
+        self.saveData()
     }
     
     @IBAction func numberTapped(_ sender: UIButton) {
@@ -75,8 +86,26 @@ class EquivalenceViewController: UIViewController {
         performSegue(withIdentifier: "showUnitClassPicker", sender: self)
     }
     
+    func updateLabels() -> Void {
+        self.sourceUnitView.beforeLabel.text = converter.sourceDescriptionStringBefore()
+        self.sourceUnitView.afterLabel.text = converter.sourceDescriptionStringAfter()
+        self.sourceUnitView.valueLabel.text = converter.sourceValueString
+        
+        self.destinationUnitView.beforeLabel.text = converter.destinationDescriptionStringBefore()
+        self.destinationUnitView.afterLabel.text = converter.destinationDescriptionStringAfter()
+        self.destinationUnitView.valueLabel.text = converter.destinationValueString
+    }
+    
+    func saveData() {
+        let savedConverter = NSKeyedArchiver.archivedData(withRootObject: self.converter)
+        let defaults = UserDefaults.standard
+        defaults.set(savedConverter, forKey: "converter")
+    }
+    
+    // MARK: Segues
+    
 //    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-//        <#code#>
+//
 //    }
     
     @IBAction func unwindToConverter(_ segue: UIStoryboardSegue) {
@@ -103,18 +132,10 @@ class EquivalenceViewController: UIViewController {
                 self.unitClassPickerTableViewController!.currentUnitClassID = self.converter.destinationUnitClassID
                 self.unitClassPickerTableViewController!.currentUnitID = self.converter.destinationUnitID
             }
+        } else if (segue.identifier == "showSettings") {
+            let settingsViewController = (segue.destination as! SettingsTableViewController)
+            settingsViewController.converter = self.converter
         }
-    }
-    
-    
-    func updateLabels() -> Void {
-        self.sourceUnitView.beforeLabel.text = converter.sourceDescriptionStringBefore()
-        self.sourceUnitView.afterLabel.text = converter.sourceDescriptionStringAfter()
-        self.sourceUnitView.valueLabel.text = converter.sourceValueString
-        
-        self.destinationUnitView.beforeLabel.text = converter.destinationDescriptionStringBefore()
-        self.destinationUnitView.afterLabel.text = converter.destinationDescriptionStringAfter()
-        self.destinationUnitView.valueLabel.text = converter.destinationValueString
     }
     
     override func didReceiveMemoryWarning() {
