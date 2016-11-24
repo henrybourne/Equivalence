@@ -18,16 +18,12 @@ class Converter: NSObject, NSCoding {
     
     var constants:Constants
     
-    var sourceUnitClass:UnitClass
     var sourceUnitClassID:Int
-    var sourceUnit:Unit
     var sourceUnitID:Int
     var sourceValue:Double = 0
     var sourceValueString:String = "0"
     
-    var destinationUnitClass:UnitClass
     var destinationUnitClassID:Int
-    var destinationUnit:Unit
     var destinationUnitID:Int
     var destinationValue:Double = 0
     var destinationValueString:String = "0"
@@ -44,13 +40,9 @@ class Converter: NSObject, NSCoding {
         ]
         self.sourceUnitClassID = 1
         self.sourceUnitID = 0
-        self.sourceUnitClass = self.unitClasses[self.sourceUnitClassID]
-        self.sourceUnit = self.sourceUnitClass.getUnit(sourceUnitID)
         
         self.destinationUnitClassID = 4
         self.destinationUnitID = 0
-        self.destinationUnitClass = self.unitClasses[destinationUnitClassID]
-        self.destinationUnit = self.sourceUnitClass.getUnit(destinationUnitID)
         
         super.init()
         
@@ -63,21 +55,13 @@ class Converter: NSObject, NSCoding {
         {
             self.sourceUnitClassID = unitClassID
             self.sourceUnitID = unitID
-            self.sourceUnitClass = self.unitClasses[self.sourceUnitClassID]
-            self.sourceUnit = self.sourceUnitClass.getUnit(self.sourceUnitID)
         }
         else
         {
             self.destinationUnitClassID = unitClassID
             self.destinationUnitID = unitID
-            self.destinationUnitClass = self.unitClasses[self.destinationUnitClassID]
-            self.destinationUnit = self.destinationUnitClass.getUnit(self.destinationUnitID)
-
         }
         convert()
-        print("--- New Unit Selected")
-        print(self.sourceUnit.name)
-        print(self.destinationUnit.name)
     }
     
     func numberOfUnitClasses() -> Int
@@ -129,33 +113,18 @@ class Converter: NSObject, NSCoding {
     }
     
     func convert() -> Void {
-        let sourceInMS: Double = self.sourceUnitClass.convertToMilliseconds(self.sourceValue, unitID: self.sourceUnitID)
-        self.destinationValue = self.destinationUnitClass.convertFromMilliseconds(sourceInMS, unitID: self.destinationUnitID)
+        let sourceInMS: Double = self.unitClasses[self.sourceUnitClassID].convertToMilliseconds(self.sourceValue, unitID: self.sourceUnitID)
+        self.destinationValue = self.unitClasses[self.destinationUnitClassID].convertFromMilliseconds(sourceInMS, unitID: self.destinationUnitID)
         self.destinationValueString = self.stringFromNumber(self.destinationValue)
         
     }
     
     func swap() -> Void {
-//        let newDestinationValue: Double = self.sourceValue
-//        self.sourceValue = self.destinationValue
-//        self.destinationValue = newDestinationValue
-//        
-//        let newDestinationValueString: String = self.sourceValueString
-//        self.sourceValueString = self.destinationValueString
-//        self.destinationValueString = newDestinationValueString
  
         self.sourceValue = 0
         self.destinationValue = 0
         self.sourceValueString = self.stringFromNumber(self.sourceValue)
         self.destinationValueString = self.stringFromNumber(self.destinationValue)
-        
-        let newDestinationUnit: Unit = self.sourceUnit
-        self.sourceUnit = self.destinationUnit
-        self.destinationUnit = newDestinationUnit
-        
-        let newDestinationUnitClass:UnitClass = self.sourceUnitClass
-        self.sourceUnitClass = self.destinationUnitClass
-        self.destinationUnitClass = newDestinationUnitClass
         
         let newDestinationUnitClassID: Int = self.sourceUnitClassID
         self.sourceUnitClassID = self.destinationUnitClassID
@@ -230,19 +199,19 @@ class Converter: NSObject, NSCoding {
     // MARK: - Labels
     func sourceDescriptionStringBefore() -> String
     {
-        return sourceUnitClass.descriptionStringBefore(self.sourceUnitID)
+        return self.unitClasses[self.sourceUnitClassID].descriptionStringBefore(self.sourceUnitID)
     }
     func sourceDescriptionStringAfter() -> String
     {
-        return sourceUnitClass.descriptionStringAfter(self.sourceUnitID)
+        return self.unitClasses[self.sourceUnitClassID].descriptionStringAfter(self.sourceUnitID)
     }
     func destinationDescriptionStringBefore() -> String
     {
-        return destinationUnitClass.descriptionStringBefore(self.destinationUnitID)
+        return self.unitClasses[self.destinationUnitClassID].descriptionStringBefore(self.destinationUnitID)
     }
     func destinationDescriptionStringAfter() -> String
     {
-        return destinationUnitClass.descriptionStringAfter(self.destinationUnitID)
+        return self.unitClasses[self.destinationUnitClassID].descriptionStringAfter(self.destinationUnitID)
     }
     
     //MARK: - NSCoding

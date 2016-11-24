@@ -69,19 +69,16 @@ class EquivalenceViewController: UIViewController {
     }
     
     @IBAction func swapTapped(_ sender: UIBarButtonItem) {
-        print("swapTapped")
         self.converter.swap()
         self.updateLabels()
     }
     
     @IBAction func sourceTapped(_ sender: UnitView) {
-        print("sourceTapped")
         self.unitTapped = ConverterUnitTarget.source
         performSegue(withIdentifier: "showUnitClassPicker", sender: self)
     }
     
     @IBAction func destinationTapped(_ sender: UnitView) {
-        print("destinationTapped")
         self.unitTapped = ConverterUnitTarget.destination
         performSegue(withIdentifier: "showUnitClassPicker", sender: self)
     }
@@ -109,16 +106,11 @@ class EquivalenceViewController: UIViewController {
 //    }
     
     @IBAction func unwindToConverter(_ segue: UIStoryboardSegue) {
-        print("\(#function)")
-        print(self.converter.sourceUnit.name)
-        print(self.converter.destinationUnit.name)
         self.updateLabels()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("EquivalenceViewController prepareForSegue")
         if (segue.identifier == "showUnitClassPicker") {
-            print("\tshowUnitClassPicker")
             self.unitClassPickerTableViewController = (segue.destination as! UnitClassPickerTableViewController)
             self.unitClassPickerTableViewController!.converter = self.converter
             self.unitClassPickerTableViewController!.unitTarget = self.unitTapped
