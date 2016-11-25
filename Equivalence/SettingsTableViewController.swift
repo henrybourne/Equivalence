@@ -31,12 +31,38 @@ class SettingsTableViewController: UITableViewController {
         self.speedOfSoundTextField.delegate = self
         self.speedOfSoundTextField.text = "\((self.converter?.constants.speedOfSound)!)"
         
+        // Add Done button to decimal keypad
         let barButtonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self.speedOfSoundTextField, action:#selector(UIResponder.resignFirstResponder))
         let barButtonFlexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         let toolbar  = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
         toolbar.items = [barButtonFlexibleSpace, barButtonDone]
         toolbar.tintColor = UIColor.black
         self.speedOfSoundTextField.inputAccessoryView = toolbar
+        
+        // Footer
+        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 50))
+        tableViewFooter.backgroundColor = UIColor.clear
+        
+        let createdBy = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 50))
+        createdBy.font = createdBy.font.withSize(14)
+        createdBy.text = "Created by Henry Bourne\nhenrybourne.uk"
+        createdBy.textColor = UIColor.lightGray
+        createdBy.textAlignment = .center
+        createdBy.isUserInteractionEnabled = true
+        createdBy.numberOfLines = 2
+        createdBy.lineBreakMode = .byWordWrapping
+        
+        let createdByTapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(createdByTapFunction))
+        createdBy.addGestureRecognizer(createdByTapGestureRecogniser)
+        
+        tableViewFooter.addSubview(createdBy)
+        tableView.tableFooterView = tableViewFooter
+    }
+    
+    func createdByTapFunction(sender: UILabel) {
+        if let url = URL(string: "https://henrybourne.uk") {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
     
     @IBAction func speedOfSoundEditingDidEnd(_ sender: UITextField) {

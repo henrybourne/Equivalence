@@ -216,12 +216,33 @@ class Converter: NSObject, NSCoding {
     
     //MARK: - NSCoding
     func encode(with aCoder: NSCoder) {
+        // Constants
         aCoder.encode(self.constants, forKey: "constants")
+        // Source
+        aCoder.encode(self.sourceUnitClassID, forKey: "sourceUnitClassID")
+        aCoder.encode(self.sourceUnitID, forKey: "sourceUnitID")
+        aCoder.encode(self.sourceValue, forKey: "sourceValue")
+        // Destination
+        aCoder.encode(self.destinationUnitClassID, forKey: "destinationUnitClassID")
+        aCoder.encode(self.destinationUnitID, forKey: "destinationUnitID")
+        aCoder.encode(self.destinationValue, forKey: "destinationValue")
+        
+
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
+        // Constants
         self.constants = aDecoder.decodeObject(forKey: "constants") as! Constants
+        // Source
+        self.sourceUnitClassID      = aDecoder.decodeInteger(forKey: "sourceUnitClassID")
+        self.sourceUnitID           = aDecoder.decodeInteger(forKey: "sourceUnitID")
+        self.sourceValue            = aDecoder.decodeDouble(forKey: "sourceValue")
+        // Destination
+        self.destinationUnitClassID = aDecoder.decodeInteger(forKey: "destinationUnitClassID")
+        self.destinationUnitID      = aDecoder.decodeInteger(forKey: "destinationUnitID")
+        self.destinationValue       = aDecoder.decodeDouble(forKey: "destinationValue")
+        // Unit Classes
         self.unitClasses = [
             Frames(),
             Frequency(),
@@ -229,6 +250,8 @@ class Converter: NSObject, NSCoding {
             Time(),
             Wavelength(constants: self.constants)
         ]
+        convert()
+        self.sourceValueString = self.stringFromNumber(self.sourceValue)
     }
     
 }

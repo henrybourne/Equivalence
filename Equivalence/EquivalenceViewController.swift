@@ -36,7 +36,7 @@ class EquivalenceViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.updateLabels()
-        self.saveData()
+        //self.saveData()
     }
     
     @IBAction func numberTapped(_ sender: UIButton) {
