@@ -38,11 +38,11 @@ class Converter: NSObject, NSCoding {
             Time(),
             Wavelength(constants: self.constants)
         ]
-        self.sourceUnitClassID = 1
-        self.sourceUnitID = 0
+        self.sourceUnitClassID = 3
+        self.sourceUnitID = 1
         
-        self.destinationUnitClassID = 4
-        self.destinationUnitID = 0
+        self.destinationUnitClassID = 2
+        self.destinationUnitID = 4
         
         super.init()
         
