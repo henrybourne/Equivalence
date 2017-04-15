@@ -67,7 +67,7 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func speedOfSoundEditingDidEnd(_ sender: UITextField) {
         if (sender.text == "") {
-            sender.text = "\(self.converter?.constants.speedOfSound)"
+            sender.text = "\(self.converter!.constants.speedOfSound)"
             self.converter?.constants.speedOfSound = (self.converter?.constants.speedOfSoundDefault)!
         } else {
             self.converter?.constants.speedOfSound = Double(sender.text!)!
