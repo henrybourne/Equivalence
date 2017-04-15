@@ -18,7 +18,7 @@ class Wavelength: UnitClass {
         self.units = [
             Unit(name: "Meters",        scalar: 1),
             Unit(name: "Centimeters",   scalar: 100),
-            Unit(name: "Millimeters",   scalar: 10000),
+            Unit(name: "Millimeters",   scalar: 1000),
             Unit(name: "Feet",          scalar: 3.2808),
             Unit(name: "Inches",        scalar: 39.370)
         ]
